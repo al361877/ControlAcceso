@@ -8,21 +8,49 @@ public class Usuario {
     private String usuario;
     private String contraseña;
     private String email;
-    private String direccion;
+    private String ciudad;
+    private String telefono;
+    private String calle;
     private String tipoUsuario;
-    private int telefono,edad;
+    private int cp;
+    private Date nacimiento;
 
+    public String getCalle() {
+        return calle;
+    }
+
+    public void setCalle(String calle) {
+        this.calle = calle;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+
+
+    public int getCp() {
+        return cp;
+    }
+
+    public void setCp(int cp) {
+        this.cp = cp;
+    }
 
     public String getTipoUsuario() {
         return tipoUsuario;
     }
 
-    public int getEdad() {
-        return edad;
+    public Date getNacimiento() {
+        return nacimiento;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public void setNacimiento(Date nacimiento) {
+        this.nacimiento = nacimiento;
     }
 
     public void setTipoUsuario(String tipoUsuario) {
@@ -69,21 +97,15 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
 
 
 
-    public int getTelefono() {
+
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

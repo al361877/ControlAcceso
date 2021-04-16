@@ -25,10 +25,10 @@ public class UsuarioDao {
         //AÑADIMOS Usuario
         public void addUsuario(Usuario usuario) {
             try {
-                jdbcTemplate.update("INSERT INTO Usuario VALUES (?,?,?,?,?,?,?,?,?)",
+                jdbcTemplate.update("INSERT INTO Usuario VALUES (?,?,?,?,?,?,?,?,?,?,?)",
                         usuario.getDni(), usuario.getUsuario(),usuario.getNombre(), usuario.getTelefono(),
-                        usuario.getEmail(),usuario.getContraseña(),usuario.getEdad(),
-                         usuario.getDireccion(), usuario.getTipoUsuario());
+                        usuario.getEmail(),usuario.getContraseña(),usuario.getNacimiento(),
+                        usuario.getCiudad(),usuario.getCalle(),usuario.getCp(), "Ciudadano");
             } catch (EmptyResultDataAccessException e){
                 return;
             }
@@ -103,10 +103,10 @@ public class UsuarioDao {
         //ACTUALIZAMOS Usuario
         public void updateUsuario(Usuario usuario){
             jdbcTemplate.update("UPDATE Usuario SET nombre=?, usuario=?," +
-                            "contraseña=?, email=?, direccion=?,  " +
+                            "contraseña=?, email=?, nacimiento=?,ciudad=?,calle=?, cp=?, " +
                             " telefono=?, tipo_usuario=? WHERE dni=?",
                     usuario.getNombre(),usuario.getUsuario(),usuario.getContraseña(),
-                    usuario.getEmail(),usuario.getDireccion(),
+                    usuario.getEmail(),usuario.getNacimiento(),usuario.getCiudad(),usuario.getCalle(),usuario.getCp(),
                     usuario.getTelefono(), usuario.getTipoUsuario(),
                     usuario.getDni());
         }

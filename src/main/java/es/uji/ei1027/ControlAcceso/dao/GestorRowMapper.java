@@ -17,7 +17,9 @@ public final class GestorRowMapper implements RowMapper<Gestor> {
         gestor.setUsuario(rs.getString("usuario"));
         gestor.setContraseña(rs.getString("contraseña"));
         gestor.setEmail(rs.getString("email"));
-        gestor.setTelefono(rs.getInt("telefono"));
+        gestor.setTelefono(rs.getString("telefono"));
+        gestor.setNacimiento(rs.getDate("nacimiento"));
+        gestor.setTipoUsuario(rs.getString("tipo_usuario"));
 
         return gestor;
 

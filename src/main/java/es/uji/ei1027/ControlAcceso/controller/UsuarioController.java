@@ -33,9 +33,7 @@ public class UsuarioController {
     public String listUusarios( Model model) {
 
         List<Usuario> lista = userDao.getCiudadanos();
-        for(Usuario usuario:lista){
-            System.out.println("Nombre: "+usuario.getNombre()+" telefono: "+usuario.getTelefono()+" mail: "+usuario.getEmail());
-        }
+
         model.addAttribute("usuarios", userDao.getCiudadanos());
 
         return "user/list.html";
@@ -51,7 +49,6 @@ public class UsuarioController {
     public String processAddSubmit(@ModelAttribute("usuario") Usuario user,BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return "user/add";
-        System.out.println("añado a: "+user.getNombre());
         userDao.addUsuario(user);
         return "redirect:list";
     }
