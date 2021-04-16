@@ -48,10 +48,10 @@ public class UsuarioController {
     }
 
     @RequestMapping(value="/add", method= RequestMethod.POST)
-    public String processAddSubmit(@ModelAttribute("usuario") Usuario user,
-                                   BindingResult bindingResult) {
+    public String processAddSubmit(@ModelAttribute("usuario") Usuario user,BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return "user/add";
+        System.out.println("añado a: "+user.getNombre());
         userDao.addUsuario(user);
         return "redirect:list";
     }

@@ -1,40 +1,31 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{fragments/base}">
 
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Espais naturals</title>
-    <meta charset="UTF-8"/>
-
+    <title>Gestionar ciudadanos</title>
+    <meta charset="UTF-8" />
     <link rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/estils.css"
-          th:href="@{/css/estils.css}"/>
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
 </head>
-
 <body>
-<div layout:fragment="content">
-<h2>Lista de usuarios del sistema</h2>
+<h1>Llista de ciudadanos</h1>
+<table  class="table table-striped">
+    <thead>
+    <tr>
+        <th >Nombre</th>
+        <th >Telefono</th>
+        <th >Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user: ${usuarios}">
+        <td  th:text="${user.nombre}"></td>
+        <td  th:text="${user.telefono}"></td>
+        <td th:text="${user.email}"></td>
 
-    <table class="table" border="5" bordercolor="#0973ba"  style=" width:80%">
-        <thead>
-        <tr>
-            <th style="background: rgba(9, 115, 186, 0.1" scope="col" colspan="2">Nombre</th>
-            <th style="background: rgba(9, 115, 186, 0.1" scope="col">Telefono</th>
-            <th style="background: rgba(9, 115, 186, 0.1" scope="col">Email</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="user: ${usuarios}">
-            <td style="background: rgba(9, 115, 186, 0.1" th:text="${user.nombre}"></td>
-            <td style="background: rgba(9, 115, 186, 0.1" th:text="${user.telefono}"></td>
-            <td style="background: rgba(9, 115, 186, 0.1" th:text="${user.email}"></td>
-
-        </tr>
-        </tbody>
-    </table>
-<a href="index.html" class="btn btn-primary" role="button">Volver</a>
-</div>
+    </tr>
+    </tbody>
+</table>
+<a href="/" class="btn btn-primary" role="button" >Volver</a>
+<a href="/user/add" class="btn btn-primary" role="button" >Añadir ciudadano</a>
 </body>
 </html>

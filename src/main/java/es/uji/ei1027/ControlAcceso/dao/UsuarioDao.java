@@ -25,7 +25,7 @@ public class UsuarioDao {
         //AÑADIMOS Usuario
         public void addUsuario(Usuario usuario) {
             try {
-                jdbcTemplate.update("INSERT INTO Usuario VALUES (?,?,?,?,?,?,?,?)",
+                jdbcTemplate.update("INSERT INTO Usuario VALUES (?,?,?,?,?,?,?,?,?)",
                         usuario.getDni(), usuario.getUsuario(),usuario.getNombre(), usuario.getTelefono(),
                         usuario.getEmail(),usuario.getContraseña(),usuario.getEdad(),
                          usuario.getDireccion(), usuario.getTipoUsuario());

@@ -9,7 +9,6 @@ public class Usuario {
     private String contraseña;
     private String email;
     private String direccion;
-
     private String tipoUsuario;
     private int telefono,edad;
 
