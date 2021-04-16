@@ -9,21 +9,21 @@ public class Usuario {
     private String contraseña;
     private String email;
     private String direccion;
-    private String genero;
+
     private String tipoUsuario;
-    private String tipodieta;
-    private int telefono, nacimiento;
+    private int telefono,edad;
 
-    public String getTipodieta() {
-        return tipodieta;
-    }
-
-    public void setTipodieta(String tipodieta) {
-        this.tipodieta = tipodieta;
-    }
 
     public String getTipoUsuario() {
         return tipoUsuario;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
 
     public void setTipoUsuario(String tipoUsuario) {
@@ -78,13 +78,7 @@ public class Usuario {
         this.direccion = direccion;
     }
 
-    public String getGenero() {
-        return genero;
-    }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
 
     public int getTelefono() {
         return telefono;
@@ -94,11 +88,5 @@ public class Usuario {
         this.telefono = telefono;
     }
 
-    public int getNacimiento() {
-        return nacimiento;
-    }
 
-    public void setNacimiento(int nacimiento) {
-        this.nacimiento = nacimiento;
-    }
 }

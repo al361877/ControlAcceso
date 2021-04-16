@@ -25,11 +25,10 @@ public class UsuarioDao {
         //AÑADIMOS Usuario
         public void addUsuario(Usuario usuario) {
             try {
-                jdbcTemplate.update("INSERT INTO Usuario VALUES (?,?,?,?,?,?,?,?,?,?,?)",
-                        usuario.getNombre(), usuario.getUsuario(), usuario.getContraseña(),
-                        usuario.getEmail(), usuario.getDireccion(), usuario.getDni(),
-                        usuario.getGenero(), usuario.getNacimiento(), usuario.getTelefono(),
-                        usuario.getTipoUsuario(), usuario.getTipodieta());
+                jdbcTemplate.update("INSERT INTO Usuario VALUES (?,?,?,?,?,?,?,?)",
+                        usuario.getDni(), usuario.getUsuario(),usuario.getNombre(), usuario.getTelefono(),
+                        usuario.getEmail(),usuario.getContraseña(),usuario.getEdad(),
+                         usuario.getDireccion(), usuario.getTipoUsuario());
             } catch (EmptyResultDataAccessException e){
                 return;
             }
@@ -37,14 +36,13 @@ public class UsuarioDao {
 
         //AÑADIMOS ciudadano
         public void addCiudadano(String dni) {
-            jdbcTemplate.update("INSERT INTO Ciudadano VALUES (?)",
-                    dni);
+            jdbcTemplate.update("INSERT INTO Ciudadano VALUES (?)",dni);
         }
 
         //Datos ciudadanos
         public List<Usuario> getCiudadanos (){
             try{
-                return jdbcTemplate.query("SELECT * FROM usuario WHERE tipoUsuario='ciudadano'", new UsuarioRowMapper());
+                return jdbcTemplate.query("SELECT * FROM usuario WHERE tipo_usuario='Ciudadano'", new UsuarioRowMapper());
             }
             catch (EmptyResultDataAccessException e){
                 return null;
@@ -67,7 +65,7 @@ public class UsuarioDao {
         //Datos controladores
         public List<Usuario> getControladores (){
             try{
-                return jdbcTemplate.query("SELECT * FROM usuario WHERE tipoUsuario='controlador'", new UsuarioRowMapper());
+                return jdbcTemplate.query("SELECT * FROM usuario WHERE tipo_usuario='controlador'", new UsuarioRowMapper());
             }
             catch (EmptyResultDataAccessException e){
                 return null;
@@ -87,7 +85,7 @@ public class UsuarioDao {
         //Datos gestores
         public List<Usuario> getGestores (){
             try{
-                return jdbcTemplate.query("SELECT * FROM usuario WHERE tipoUsuario='gestor'", new UsuarioRowMapper());
+                return jdbcTemplate.query("SELECT * FROM usuario WHERE tipo_usuario='gestor'", new UsuarioRowMapper());
             }
             catch (EmptyResultDataAccessException e){
                 return null;
@@ -105,12 +103,12 @@ public class UsuarioDao {
         //ACTUALIZAMOS Usuario
         public void updateUsuario(Usuario usuario){
             jdbcTemplate.update("UPDATE Usuario SET nombre=?, usuario=?," +
-                            "contraseña=?, email=?, direccion=?, genero=?, " +
-                            "nacimiento=?, telefono=?, tipousuario=?, tipodieta=? WHERE dni=?",
+                            "contraseña=?, email=?, direccion=?,  " +
+                            " telefono=?, tipo_usuario=? WHERE dni=?",
                     usuario.getNombre(),usuario.getUsuario(),usuario.getContraseña(),
-                    usuario.getEmail(),usuario.getDireccion(),usuario.getGenero(),
-                    usuario.getNacimiento(),usuario.getTelefono(), usuario.getTipoUsuario(),
-                    usuario.getTipodieta(),usuario.getDni());
+                    usuario.getEmail(),usuario.getDireccion(),
+                    usuario.getTelefono(), usuario.getTipoUsuario(),
+                    usuario.getDni());
         }
         public Usuario getUsuario (String usuario ){
             try{

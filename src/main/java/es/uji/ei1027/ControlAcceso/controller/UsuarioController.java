@@ -3,6 +3,7 @@ package es.uji.ei1027.ControlAcceso.controller;
 import javax.servlet.http.HttpSession;
 
 import es.uji.ei1027.ControlAcceso.dao.UsuarioDao;
+import es.uji.ei1027.ControlAcceso.model.Ciudadano;
 import es.uji.ei1027.ControlAcceso.model.Usuario;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +15,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 @RequestMapping("user")
 public class UsuarioController {
     private UsuarioDao userDao;
+
 
     @Autowired
     public void setUsuario(UsuarioDao userDao) {
@@ -25,23 +30,29 @@ public class UsuarioController {
     }
 
     @RequestMapping("/list")
-    public String listUusarios(HttpSession session, Model model) {
-        model.addAttribute("users", userDao.getUsuarios());
-        return "usuario/list";
+    public String listUusarios( Model model) {
+
+        List<Usuario> lista = userDao.getCiudadanos();
+        for(Usuario usuario:lista){
+            System.out.println("Nombre: "+usuario.getNombre()+" telefono: "+usuario.getTelefono()+" mail: "+usuario.getEmail());
+        }
+        model.addAttribute("usuarios", userDao.getCiudadanos());
+
+        return "user/list.html";
     }
 
     @RequestMapping(value="/add")
     public String addUsuario(Model model) {
         model.addAttribute("usuario", new Usuario());
-        return "usuario/add";
+        return "user/add";
     }
 
     @RequestMapping(value="/add", method= RequestMethod.POST)
     public String processAddSubmit(@ModelAttribute("usuario") Usuario user,
                                    BindingResult bindingResult) {
         if (bindingResult.hasErrors())
-            return "usuario/add";
-        UsuarioDao.addUsuario(user);
+            return "user/add";
+        userDao.addUsuario(user);
         return "redirect:list";
     }
 

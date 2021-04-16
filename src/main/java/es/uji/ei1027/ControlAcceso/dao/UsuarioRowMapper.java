@@ -9,18 +9,15 @@ import java.sql.SQLException;
 public class UsuarioRowMapper implements RowMapper<Usuario> {
     public Usuario mapRow(ResultSet rs, int RowNum) throws SQLException {
         Usuario usuario = new Usuario();
-        usuario.setNombre(rs.getString("nombre"));
+        usuario.setNombre(rs.getString("nombre_y_apellidos"));
         usuario.setDni(rs.getString("dni"));
-        usuario.setUsuario(rs.getString("usuario"));
+        usuario.setUsuario(rs.getString("nombre_usuario"));
         usuario.setContraseña(rs.getString("contraseña"));
-        usuario.setEmail(rs.getString("email"));
+        usuario.setEmail(rs.getString("correo"));
         usuario.setDireccion(rs.getString("direccion"));
         usuario.setTelefono(rs.getInt("telefono"));
-        usuario.setNacimiento(rs.getInt("nacimiento"));
-        usuario.setGenero(rs.getString("genero"));
-        usuario.setTipoUsuario(rs.getString("tipousuario"));
-        usuario.setTipodieta(rs.getString("tipodieta"));
-
+        usuario.setEdad(rs.getInt("edad"));
+        usuario.setTipoUsuario(rs.getString("tipo_usuario"));
         return usuario;
 
     }
