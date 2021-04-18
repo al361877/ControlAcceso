@@ -24,7 +24,9 @@ public class UsuarioDao {
 
         //AÑADIMOS Usuario
         public void addUsuario(Usuario usuario) {
+            System.out.println(usuario.toString());
             try {
+
                 jdbcTemplate.update("INSERT INTO Usuario VALUES (?,?,?,?,?,?,?,?,?,?,?)",
                         usuario.getDni(), usuario.getUsuario(),usuario.getNombre(), usuario.getTelefono(),
                         usuario.getEmail(),usuario.getContraseña(),usuario.getNacimiento(),
@@ -102,6 +104,7 @@ public class UsuarioDao {
 
         //ACTUALIZAMOS Usuario
         public void updateUsuario(Usuario usuario){
+            System.out.println("entrooooooooo");
             jdbcTemplate.update("UPDATE Usuario SET nombre=?, usuario=?," +
                             "contraseña=?, email=?, nacimiento=?,ciudad=?,calle=?, cp=?, " +
                             " telefono=?, tipo_usuario=? WHERE dni=?",

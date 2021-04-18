@@ -21,8 +21,6 @@ div {
 <body>
 
 
-<h1>Llista de ciudadanos</h1>
-
 <div  class="container" >
     <h1>Llista de ciudadanos</h1>
     <div align="center">
@@ -39,7 +37,7 @@ div {
                 <td  th:text="${user.nombre}"></td>
                 <td  th:text="${user.telefono}"></td>
                 <td th:text="${user.email}"></td>
-                <td><a th:href="@{/user/update/{user}(user=${user})}" class="btn btn-warning" role="button">Edita</a></td>
+                <td><a th:href="@{/user/update/{dni}(dni=${user.dni})}" class="btn btn-warning" role="button">Edita</a></td>
                 <td><a th:href="@{/user/delete/{dni}(dni=${user.dni})}" class="btn btn-danger" role="button">Borrar</a></td>
 
             </tr>

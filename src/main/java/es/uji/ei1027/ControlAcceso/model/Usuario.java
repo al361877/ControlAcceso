@@ -97,9 +97,22 @@ public class Usuario {
         this.email = email;
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "nombre='" + nombre + '\'' +
+                ", dni='" + dni + '\'' +
+                ", usuario='" + usuario + '\'' +
+                ", contraseña='" + contraseña + '\'' +
+                ", email='" + email + '\'' +
+                ", ciudad='" + ciudad + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", calle='" + calle + '\'' +
+                ", tipoUsuario='" + tipoUsuario + '\'' +
+                ", cp=" + cp +
+                ", nacimiento=" + nacimiento +
+                '}';
+    }
 
     public String getTelefono() {
         return telefono;

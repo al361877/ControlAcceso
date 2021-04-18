@@ -41,33 +41,34 @@ public class UsuarioController {
 
     @RequestMapping(value="/add")
     public String addUsuario(Model model) {
-        model.addAttribute("usuario", new Usuario());
+        model.addAttribute("user", new Usuario());
         return "user/add";
     }
 
     @RequestMapping(value="/add", method= RequestMethod.POST)
-    public String processAddSubmit(@ModelAttribute("usuario") Usuario user,BindingResult bindingResult) {
-        if (bindingResult.hasErrors())
-            return "user/add";
+    public String processAddSubmit(@ModelAttribute("user") Usuario user,BindingResult bindingResult) {
+        System.out.println(user.toString());
+
         userDao.addUsuario(user);
         return "redirect:list";
     }
 
     @RequestMapping(value="/update/{dni}", method = RequestMethod.GET)
     public String editUsuario(Model model, @PathVariable String dni) {
-        model.addAttribute("user", userDao.getUsuarioDni(dni));
+        model.addAttribute("usuario", userDao.getUsuarioDni(dni));
         return "user/update";
     }
 
     @RequestMapping(value="/busca/{dni}", method = RequestMethod.GET)
     public String buscaUsuario(Model model, @PathVariable String dni) {
-        model.addAttribute("user", userDao.getUsuarioDni(dni));
+
+        model.addAttribute("usuario", userDao.getUsuarioDni(dni));
         return "user/busca";
     }
 
     @RequestMapping(value="/update", method = RequestMethod.POST)
     public String processUpdateSubmit(
-            @ModelAttribute("user") Usuario usuario,
+            @ModelAttribute("usuario") Usuario usuario,
             BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return "user/update";
