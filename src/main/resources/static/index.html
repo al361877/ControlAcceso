@@ -1,7 +1,6 @@
-<!DOCTYPE html>
+
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.w3.org/1999/xhtml"
-      layout:decorate="~{templates/fragments/base}">
+      xmlns:layout="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8" />
     <title>Espacios naturales</title>
@@ -13,15 +12,19 @@
     <link rel="stylesheet" type="text/css" href="/css/estils.css"
           th:href="@{/css/estils.css}"/>
     <style>
-        img {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>
+body {
+  background-color: lightgreen;
+}
+
+div {
+  background-color: white;
+}
+
+
+</style>
 </head>
 <body>
-<div  layout:fragment="content">
+<div  class="container">
 <!--<div style="padding: 25px 50px;background-color:#B0E0E6;"><h1 >Espacios naturales</h1></div>-->
 
 <br>
@@ -29,7 +32,7 @@
     <tr>
         <td><a class="boton_personalizado1" href="user/list" role="button">Usuarios</a></td>
         <td></td>
-        <td><a class="boton_personalizado1" href="" role="button">Registro</a></td>
+        <td><a class="boton_personalizado1" href="user/add" role="button">Registro</a></td>
     <tr></tr>
     <tr></tr>
     <tr></tr>
@@ -42,11 +45,7 @@
 
 </table>
 
-<table>
-    <tr><img src="images/1.png"></tr>
-    <tr><img src="images/2.png"></tr>
-    <tr><img src="images/3.png"></tr>
-</table>
+
 
 
 </div>

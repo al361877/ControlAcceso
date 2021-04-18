@@ -1,66 +1,82 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Crear nou nadador</title>
+    <title>Registrarse</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
 </head>
-<body>
-<h2>Nou nadador</h2>
-<form action="#" th:action="@{/user/add}"
-      th:object="${usuario}" method="post">
-    <table>
-        <tr>
-            <td><label>Dni</label></td>
-            <td><input type="text" th:field="*{dni}" /></td>
-        </tr>
-        <tr>
-            <td><label>Usuario</label></td>
-            <td><input type="text" th:field="*{usuario}" /></td>
-        </tr>
-        <tr>
-            <td><label>Nombre y apellidos</label></td>
-            <td><input type="text" th:field="*{nombre}" /></td>
-        </tr>
-        <tr>
-            <td><label>Telefono </label></td>
-            <td><input type="text" th:field="*{telefono}" /></td>
-        </tr>
-        <tr>
-            <td><label>Email</label></td>
-            <td><input type="text" th:field="*{email}" /></td>
-        </tr>
-        <tr>
-            <td><label>Constaseña</label></td>
-            <td><input type="password" th:field="*{contraseña}" /></td>
-        </tr>
-        <tr>
-            <td><label>Nacimiento</label></td>
-            <td><input type="date" th:field="*{nacimiento}" /></td>
-        </tr>
-        <tr>
-            <td><label>Ciudad</label></td>
-            <td><input type="text" th:field="*{ciudad}" /></td>
-        </tr>
-        <tr>
-            <td><label>Calle</label></td>
-            <td><input type="text" th:field="*{calle}" /></td>
-        </tr>
-        <tr>
-            <td><label>Código postal</label></td>
-            <td><input type="text" th:field="*{cp}" /></td>
-        </tr>
-        <tr>
-            <td><label>Edad</label></td>
-            <td><input type="number" th:field="*{edad}" /></td>
-        </tr>
-        <tr>
-            <td colspan="2"><input type="submit" role="button" class="btn btn-success" value="Aceptar" /></td>
+<style>
+body {
+  background-color: lightgreen;
+}
 
-        </tr>
-    </table>
-    <a href="/" class="btn btn-primary" role="button" >Volver</a>
-</form>
+div {
+  background-color: white;
+}
+
+
+</style>
+<body>
+
+<div class="container">
+    <h2>Registrarse </h2>
+    <div align="center" >
+        <form action="#" th:action="@{/user/add}"
+              th:object="${usuario}" method="post">
+            <table>
+                <tr>
+                    <td><label>Dni</label></td>
+                    <td><input type="text" th:field="*{dni}" /></td>
+                </tr>
+                <tr>
+                    <td><label>Usuario</label></td>
+                    <td><input type="text" th:field="*{usuario}" /></td>
+                </tr>
+                <tr>
+                    <td><label>Nombre y apellidos</label></td>
+                    <td><input type="text" th:field="*{nombre}" /></td>
+                </tr>
+                <tr>
+                    <td><label>Telefono </label></td>
+                    <td><input type="text" th:field="*{telefono}" /></td>
+                </tr>
+                <tr>
+                    <td><label>Email</label></td>
+                    <td><input type="text" th:field="*{email}" /></td>
+                </tr>
+                <tr>
+                    <td><label>Constaseña</label></td>
+                    <td><input type="password" th:field="*{contraseña}" /></td>
+                </tr>
+                <tr>
+                    <td><label>Nacimiento</label></td>
+                    <td><input type="date" th:field="*{nacimiento}" /></td>
+                </tr>
+                <tr>
+                    <td><label>Ciudad</label></td>
+                    <td><input type="text" th:field="*{ciudad}" /></td>
+                </tr>
+                <tr>
+                    <td><label>Calle</label></td>
+                    <td><input type="text" th:field="*{calle}" /></td>
+                </tr>
+                <tr>
+                    <td><label>Código postal</label></td>
+                    <td><input type="text" th:field="*{cp}" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" role="button" class="btn btn-success"  value="Aceptar" /></td>
+
+                </tr>
+            </table>
+
+        </form>
+    </div>
+    <a href="./list" class="btn btn-primary" role="button" >Volver</a>
+</div>
+
+
+
 </body>
 </html>
