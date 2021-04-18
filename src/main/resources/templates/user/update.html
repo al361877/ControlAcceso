@@ -1,0 +1,74 @@
+
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Editar usuario</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+</head>
+<style>
+body {
+  background-color: lightgreen;
+}
+
+div {
+  background-color: white;
+}
+
+
+</style>
+<body>
+<h2>Editar usuario</h2>
+<form action="#" th:action="@{/user/update}"
+      th:object="${user}" method="post">
+    <table>
+        <tr>
+            <td><label>Dni</label></td>
+            <td><input type="text" th:field="*{dni}" hidden/></td>
+        </tr>
+        <tr>
+            <td><label>Usuario</label></td>
+            <td><input type="text" th:field="*{usuario}" /></td>
+        </tr>
+        <tr>
+            <td><label>Nombre y apellidos</label></td>
+            <td><input type="text" th:field="*{nombre}" hidden/></td>
+        </tr>
+        <tr>
+            <td><label>Telefono </label></td>
+            <td><input type="text" th:field="*{telefono}" /></td>
+        </tr>
+        <tr>
+            <td><label>Email</label></td>
+            <td><input type="text" th:field="*{email}" /></td>
+        </tr>
+        <tr>
+            <td><label>Contraseña</label></td>
+            <td><input type="password" th:field="*{contraseña}" /></td>
+        </tr>
+        <tr>
+            <td><label>Nacimiento</label></td>
+            <td><input type="date" th:field="*{nacimiento}" hidden/></td>
+        </tr>
+        <tr>
+            <td><label>Ciudad</label></td>
+            <td><input type="text" th:field="*{ciudad}" /></td>
+        </tr>
+        <tr>
+            <td><label>Calle</label></td>
+            <td><input type="text" th:field="*{calle}" /></td>
+        </tr>
+        <tr>
+            <td><label>Código postal</label></td>
+            <td><input type="text" th:field="*{cp}" /></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" role="button" class="btn btn-success"  value="Aceptar" /></td>
+            <a href="../" class="btn btn-primary" role="button" >Volver</a>
+
+        </tr>
+    </table>
+    <a href="/" class="btn btn-primary" role="button" >Volver</a>
+</form>
+</body>
+</html>
