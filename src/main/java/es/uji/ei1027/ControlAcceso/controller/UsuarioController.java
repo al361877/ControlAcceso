@@ -55,22 +55,22 @@ public class UsuarioController {
 
     @RequestMapping(value="/update/{dni}", method = RequestMethod.GET)
     public String editUsuario(Model model, @PathVariable String dni) {
-        model.addAttribute("usuario", userDao.getUsuarioDni(dni));
-        return "usuario/update";
+        model.addAttribute("user", userDao.getUsuarioDni(dni));
+        return "user/update";
     }
 
     @RequestMapping(value="/busca/{dni}", method = RequestMethod.GET)
     public String buscaUsuario(Model model, @PathVariable String dni) {
-        model.addAttribute("usuario", userDao.getUsuarioDni(dni));
-        return "usuario/busca";
+        model.addAttribute("user", userDao.getUsuarioDni(dni));
+        return "user/busca";
     }
 
     @RequestMapping(value="/update", method = RequestMethod.POST)
     public String processUpdateSubmit(
-            @ModelAttribute("usuario") Usuario usuario,
+            @ModelAttribute("user") Usuario usuario,
             BindingResult bindingResult) {
         if (bindingResult.hasErrors())
-            return "usuario/update";
+            return "user/update";
         userDao.updateUsuario(usuario);
         return "redirect:list";
     }

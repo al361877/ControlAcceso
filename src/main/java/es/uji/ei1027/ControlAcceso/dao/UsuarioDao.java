@@ -95,7 +95,7 @@ public class UsuarioDao {
 
         //OCULTAMOS Usuario
         public void deleteUsuario(String dni) {
-            jdbcTemplate.update("UPDATE Usuario SET tipousuario='Borrado' WHERE dni=?", dni);
+            jdbcTemplate.update("UPDATE Usuario SET tipo_usuario='Borrado' WHERE dni=?", dni);
         }
 
 
