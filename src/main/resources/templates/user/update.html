@@ -1,7 +1,7 @@
 
 <html xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Editar usuario</title>
+    <title>Editar perfil</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
@@ -18,40 +18,42 @@ div {
 
 </style>
 <body>
-<div class="container">
-    <h2>Editar usuario</h2>
-    <div align="center" >
 
+<div class="container">
+    <h2>Editar perfil </h2>
+    <div align="center" >
         <form action="#" th:action="@{/user/update}"
-              th:object="${usuario}" method="post">
+              th:object="${user}" method="post">
             <table>
                 <tr>
-                    <td><label>Dni</label></td>
+
                     <td><input type="text" th:field="*{dni}" hidden/></td>
                 </tr>
                 <tr>
-                    <td><label>Usuario</label></td>
-                    <td><input type="text" th:field="*{usuario}" /></td>
+
+                    <td><input type="text" th:field="*{usuario}" hidden /></td>
                 </tr>
                 <tr>
                     <td><label>Nombre y apellidos</label></td>
-                    <td><input type="text" th:field="*{nombre}" hidden/></td>
+                    <td><input type="text" th:field="*{nombre}" /></td>
                 </tr>
                 <tr>
-                    <td><label>Telefono </label></td>
-                    <td><input type="text" th:field="*{telefono}" /></td>
+
+                    <td><input type="text" th:field="*{telefono}" hidden/></td>
                 </tr>
                 <tr>
-                    <td><label>Email</label></td>
-                    <td><input type="text" th:field="*{email}" /></td>
+
+                    <td><input type="text" th:field="*{email}"hidden /></td>
+                    <td><input type="text" th:field="*{tipoUsuario}"hidden /></td>
                 </tr>
                 <tr>
-                    <td><label>Contraseña</label></td>
-                    <td><input type="password" th:field="*{contraseña}" /></td>
+
+                    <td><input type="password" th:field="*{contraseña}" hidden/></td>
                 </tr>
                 <tr>
                     <td><label>Año nacimiento</label></td>
-                    <td><input type="number" th:field="*{nacimiento}" /></td>
+                    <td ><input type="date" th:field="*{nacimientoString}" /></td>
+
                 </tr>
                 <tr>
                     <td><label>Ciudad</label></td>
@@ -68,12 +70,10 @@ div {
                 <tr>
                     <td colspan="2"><input type="submit" role="button" class="btn btn-success"  value="Aceptar" /></td>
 
-
                 </tr>
             </table>
 
         </form>
-
     </div>
     <a href="../list" class="btn btn-primary" role="button" >Volver</a>
 </div>

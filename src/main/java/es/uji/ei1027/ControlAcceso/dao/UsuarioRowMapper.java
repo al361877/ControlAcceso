@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalTime;
 
 public class UsuarioRowMapper implements RowMapper<Usuario> {
     public Usuario mapRow(ResultSet rs, int RowNum) throws SQLException {
@@ -18,8 +19,9 @@ public class UsuarioRowMapper implements RowMapper<Usuario> {
         usuario.setCalle(rs.getString("calle"));
         usuario.setCp(rs.getInt("cp"));
         usuario.setTelefono(rs.getString("telefono"));
-        usuario.setNacimiento(rs.getDate("nacimiento"));
+        usuario.setNacimiento(rs.getString("nacimiento"));
         usuario.setTipoUsuario(rs.getString("tipo_usuario"));
+
         return usuario;
 
     }

@@ -10,6 +10,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Repository  //En Spring los DAOs van anotados con @Repository
@@ -29,7 +31,7 @@ public class UsuarioDao {
 
                 jdbcTemplate.update("INSERT INTO Usuario VALUES (?,?,?,?,?,?,?,?,?,?,?)",
                         usuario.getDni(), usuario.getUsuario(),usuario.getNombre(), usuario.getTelefono(),
-                        usuario.getEmail(),usuario.getContraseña(),usuario.getNacimiento(),
+                        usuario.getEmail(),usuario.getContraseña(), usuario.getNacimiento(),
                         usuario.getCiudad(),usuario.getCalle(),usuario.getCp(), "Ciudadano");
             } catch (EmptyResultDataAccessException e){
                 return;
@@ -104,13 +106,14 @@ public class UsuarioDao {
 
         //ACTUALIZAMOS Usuario
         public void updateUsuario(Usuario usuario){
-            System.out.println("entrooooooooo");
-            jdbcTemplate.update("UPDATE Usuario SET nombre=?, usuario=?," +
-                            "contraseña=?, email=?, nacimiento=?,ciudad=?,calle=?, cp=?, " +
-                            " telefono=?, tipo_usuario=? WHERE dni=?",
-                    usuario.getNombre(),usuario.getUsuario(),usuario.getContraseña(),
-                    usuario.getEmail(),usuario.getNacimiento(),usuario.getCiudad(),usuario.getCalle(),usuario.getCp(),
-                    usuario.getTelefono(), usuario.getTipoUsuario(),
+            usuario.setNacimiento(usuario.getNacimientoString());
+            System.out.println(usuario.toString());
+
+            jdbcTemplate.update(" UPDATE Usuario SET  nombre_y_apellidos=?," +
+                            " telefono=?, nacimiento=?, email=?, ciudad=?,calle=?, cp=? " +
+                            " WHERE dni=?",
+                    usuario.getNombre(),usuario.getTelefono(),
+                    usuario.getNacimiento(),usuario.getEmail(),usuario.getCiudad(),usuario.getCalle(),usuario.getCp(),
                     usuario.getDni());
         }
         public Usuario getUsuario (String usuario ){

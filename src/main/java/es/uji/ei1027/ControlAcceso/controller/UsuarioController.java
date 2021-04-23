@@ -1,9 +1,8 @@
 package es.uji.ei1027.ControlAcceso.controller;
 
-import javax.servlet.http.HttpSession;
 
 import es.uji.ei1027.ControlAcceso.dao.UsuarioDao;
-import es.uji.ei1027.ControlAcceso.model.Ciudadano;
+
 import es.uji.ei1027.ControlAcceso.model.Usuario;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,22 +39,25 @@ public class UsuarioController {
     }
 
     @RequestMapping(value="/add")
-    public String addUsuario(Model model) {
+    public String addCiudadano(Model model) {
         model.addAttribute("user", new Usuario());
+
         return "user/add";
     }
 
+    //add ciudadano
     @RequestMapping(value="/add", method= RequestMethod.POST)
-    public String processAddSubmit(@ModelAttribute("user") Usuario user,BindingResult bindingResult) {
-        System.out.println(user.toString());
+    public String processAddCiudadanoSubmit(@ModelAttribute("user") Usuario user,BindingResult bindingResult) {
 
         userDao.addUsuario(user);
+        userDao.addCiudadano(user.getDni());
         return "redirect:list";
     }
 
     @RequestMapping(value="/update/{dni}", method = RequestMethod.GET)
     public String editUsuario(Model model, @PathVariable String dni) {
-        model.addAttribute("usuario", userDao.getUsuarioDni(dni));
+
+        model.addAttribute("user", userDao.getUsuarioDni(dni));
         return "user/update";
     }
 
@@ -67,9 +69,9 @@ public class UsuarioController {
     }
 
     @RequestMapping(value="/update", method = RequestMethod.POST)
-    public String processUpdateSubmit(
-            @ModelAttribute("usuario") Usuario usuario,
+    public String processUpdateSubmit(@ModelAttribute("user") Usuario usuario,
             BindingResult bindingResult) {
+
         if (bindingResult.hasErrors())
             return "user/update";
         userDao.updateUsuario(usuario);

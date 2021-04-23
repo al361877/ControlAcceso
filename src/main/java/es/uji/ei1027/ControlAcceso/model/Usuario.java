@@ -1,5 +1,9 @@
 package es.uji.ei1027.ControlAcceso.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Usuario {
@@ -13,7 +17,11 @@ public class Usuario {
     private String calle;
     private String tipoUsuario;
     private int cp;
-    private Date nacimiento;
+    private String nacimientoString;
+
+
+    private LocalDate nacimientoDate;
+
 
     public String getCalle() {
         return calle;
@@ -32,7 +40,6 @@ public class Usuario {
     }
 
 
-
     public int getCp() {
         return cp;
     }
@@ -45,12 +52,28 @@ public class Usuario {
         return tipoUsuario;
     }
 
-    public Date getNacimiento() {
-        return nacimiento;
+
+    public LocalDate getNacimiento(){
+        nacimientoDate = LocalDate.parse(nacimientoString);
+        return this.nacimientoDate;
+    }
+//    public String getNacimiento(){
+//
+//        return this.nacimiento.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+//    }
+
+
+    public String getNacimientoString(){
+        return this.nacimientoString;
     }
 
-    public void setNacimiento(Date nacimiento) {
-        this.nacimiento = nacimiento;
+    public  void setNacimientoString(String nacimiento){
+        this.nacimientoString=nacimiento;
+    }
+    public void setNacimiento(String nacimiento) {
+        this.nacimientoString=nacimiento;
+        LocalDate localDate1 = LocalDate.parse(nacimiento);
+        this.nacimientoDate = localDate1;
     }
 
     public void setTipoUsuario(String tipoUsuario) {
@@ -110,7 +133,7 @@ public class Usuario {
                 ", calle='" + calle + '\'' +
                 ", tipoUsuario='" + tipoUsuario + '\'' +
                 ", cp=" + cp +
-                ", nacimiento=" + nacimiento +
+                ", nacimiento=" + nacimientoDate +
                 '}';
     }
 
