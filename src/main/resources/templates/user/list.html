@@ -1,10 +1,11 @@
-
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/base}">
 <head>
     <title>Gestionar ciudadanos</title>
-    <meta charset="UTF-8" />
+    <meta charset=" UTF-8" />
     <link rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
 
     <style>
 body {
@@ -21,7 +22,7 @@ div {
 <body>
 
 
-<div  class="container" >
+<div  layout:fragment="content" >
     <h1>Llista de ciudadanos</h1>
     <div align="center">
         <table  class="table table-striped">
@@ -49,6 +50,8 @@ div {
     </div>
     <a href="/user/add" class="btn btn-primary" role="button" >Añadir ciudadano</a>
     <a href="/" class="btn btn-primary" role="button" >Volver</a>
+    <br><br>
+    <br><br>
 </div>
 
 </body>
